@@ -1,15 +1,17 @@
 package com.technologies.venom.room.models;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "disciplinas")
+@Entity(tableName = "disciplinas", foreignKeys = {@ForeignKey(entity = Professor.class, parentColumns = "professorId", childColumns = "professorId")})
 public class Disciplina {
 
     @PrimaryKey(autoGenerate = true)
     public long disciplinaId;
     private String nome;
+    private long professorId;
 
     //construtor vazio
     @Ignore
@@ -18,8 +20,9 @@ public class Disciplina {
     }
 
     //construtor com parâmetros
-    public Disciplina(String nome) {
+    public Disciplina(String nome, long professorId) {
         this.nome = nome;
+        this.professorId = professorId;
     }
 
     //getters
@@ -31,6 +34,10 @@ public class Disciplina {
         return nome;
     }
 
+    public long getProfessorId() {
+        return professorId;
+    }
+
     //setters
     public void setDisciplinaId(long disciplinaId) {
         this.disciplinaId = disciplinaId;
@@ -38,5 +45,9 @@ public class Disciplina {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setProfessorId(long professorId) {
+        this.professorId = professorId;
     }
 }

@@ -26,4 +26,41 @@
         android:text="Cadastrar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgvwAlunos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/btnCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar"
+        app:srcCompat="@drawable/ic_aluno" />
+
+    <TextView
+        android:id="@+id/txtvwMainAlunos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alunos"
+        app:layout_constraintEnd_toEndOf="@+id/imgvwAlunos"
+        app:layout_constraintStart_toStartOf="@+id/imgvwAlunos"
+        app:layout_constraintTop_toBottomOf="@+id/imgvwAlunos" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintStart_toEndOf="@+id/imgvwAlunos"
+        app:layout_constraintTop_toTopOf="@+id/imgvwAlunos"
+        app:srcCompat="@drawable/ic_professor" />
+
+    <TextView
+        android:id="@+id/txtvwMainProfessores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Professores"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

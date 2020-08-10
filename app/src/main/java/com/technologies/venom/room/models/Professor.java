@@ -5,44 +5,35 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-
-@Entity(tableName = "alunos")
-public class Aluno implements Serializable {
+@Entity(tableName = "professores")
+public class Professor {
 
     @PrimaryKey(autoGenerate = true)
-    public long alunoId;
+    private long professorId;
     private String primeiroNome;
     private String ultimoNome;
-    private String cpf;
-    private boolean inativo;
-
+    private String matricula;
     @Embedded(prefix = "end")
     private Endereco endereco;
 
     //construtor vazio
-
     @Ignore
-    public Aluno() {
 
+    public Professor() {
     }
 
     //construtor com parâmetros
 
-    public Aluno(String primeiroNome, String ultimoNome, String cpf, boolean inativo, Endereco endereco) {
+    public Professor(String primeiroNome, String ultimoNome, String matricula, Endereco endereco) {
         this.primeiroNome = primeiroNome;
         this.ultimoNome = ultimoNome;
-        this.cpf = cpf;
-        this.inativo = inativo;
+        this.matricula = matricula;
         this.endereco = endereco;
     }
 
     //getters
-    public long getAlunoId() {
-        return alunoId;
+    public long getProfessorId() {
+        return professorId;
     }
 
     public String getPrimeiroNome() {
@@ -53,12 +44,8 @@ public class Aluno implements Serializable {
         return ultimoNome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public boolean isInativo() {
-        return inativo;
+    public String getMatricula() {
+        return matricula;
     }
 
     public Endereco getEndereco() {
@@ -67,8 +54,8 @@ public class Aluno implements Serializable {
 
     //setters
 
-    public void setAlunoId(long alunoId) {
-        this.alunoId = alunoId;
+    public void setProfessorId(long professorId) {
+        this.professorId = professorId;
     }
 
     public void setPrimeiroNome(String primeiroNome) {
@@ -79,12 +66,8 @@ public class Aluno implements Serializable {
         this.ultimoNome = ultimoNome;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setInativo(boolean inativo) {
-        this.inativo = inativo;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public void setEndereco(Endereco endereco) {

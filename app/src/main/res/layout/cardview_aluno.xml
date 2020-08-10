@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardviewAluno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BBBDCC">
+
+        <ImageView
+            android:id="@+id/imgvwCVAluno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_aluno" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoTituloId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Id"
+            android:textColor="#9E9D24"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imgvwCVAluno"
+            app:layout_constraintTop_toTopOf="@+id/imgvwCVAluno" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0001"
+            android:textColor="#283593"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/txtvwCVAlunoTituloId"
+            app:layout_constraintTop_toBottomOf="@+id/txtvwCVAlunoTituloId" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoTituloNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Nome"
+            android:textColor="#9E9D24"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txtvwCVAlunoId"
+            app:layout_constraintTop_toBottomOf="@+id/txtvwCVAlunoId" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edgard Oliveira"
+            android:textColor="#283593"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/txtvwCVAlunoTituloNome"
+            app:layout_constraintTop_toBottomOf="@+id/txtvwCVAlunoTituloNome" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoTituloInativo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:text="Status"
+            android:textColor="#9E9D24"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtvwCVAlunoTituloId" />
+
+        <TextView
+            android:id="@+id/txtvwCVAlunoInativo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INATIVO"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtvwCVAlunoTituloInativo"
+            app:layout_constraintStart_toStartOf="@+id/txtvwCVAlunoTituloInativo"
+            app:layout_constraintTop_toBottomOf="@+id/txtvwCVAlunoTituloInativo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

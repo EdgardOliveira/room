@@ -1,6 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+    //foi necessário colocar isto para resolver problemas de compilação com interface
+    //Invoke-customs are only supported starting with android 0 --min-api 26
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -23,9 +30,23 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0'
     def room_version = "2.2.5"
+    def swipe_version = "1.1.0"
+    def retrofit_version = "2.9.0"              //versão do retrofit
+
+
+    //implementação do cardview
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //implementação do room database
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    //Implementação do swipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_version"
+    //Necessário para funcionar o retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'

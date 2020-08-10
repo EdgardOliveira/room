@@ -1,26 +1,21 @@
 package com.technologies.venom.room.persistence;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import com.technologies.venom.room.models.Matricula;
 
 import java.util.List;
 
 @Dao
-public interface MatriculaDao {
-    @Insert
-    long inserir(Matricula matricula);
-
-    @Update
-    void atualizar(Matricula matricula);
-
-    @Delete
-    void excluir(Matricula matricula);
+public abstract class MatriculaDao implements GenericoDao<Matricula> {
 
     @Query("SELECT * FROM matriculas")
-    List<Matricula> listar();
+    public abstract Matricula listar();
+
+    @Query("SELECT * FROM matriculas WHERE disciplinaId = :disciplinaId AND alunoId = :alunoId")
+    public abstract Matricula listarPorId(long alunoId, long disciplinaId);
+
+    @Query("SELECT * FROM matriculas where alunoId = :alunoId")
+    public abstract List<Matricula> listarPorAlunoId(long alunoId);
 }

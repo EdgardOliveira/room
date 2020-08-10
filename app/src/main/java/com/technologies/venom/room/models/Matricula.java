@@ -11,7 +11,6 @@ public class Matricula {
     public long alunoId;
     public long disciplinaId;
 
-
     //Construtor vazio
     @Ignore
     public Matricula() {
