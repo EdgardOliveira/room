@@ -1,30 +1,39 @@
 package com.technologies.venom.room.views;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.technologies.venom.room.R;
+import com.technologies.venom.room.api.RESTService;
 import com.technologies.venom.room.models.Aluno;
 import com.technologies.venom.room.models.Endereco;
 import com.technologies.venom.room.persistence.AlunoRepository;
 
-public class AlunoActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+public class AlunoActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private final String URL = "https://viacep.com.br/ws/";
+    private Retrofit retrofit;
     private Aluno aluno;
     private TextInputEditText txtId, txtNome, txtSobrenome, txtCPF, txtCEP, txtLogradouro, txtNumero, txtComplemento, txtBairro, txtCidade, txtUF;
     private TextInputLayout layId, layNome, laySobrenome, layCPF, layCEP, layLogradouro, layNumero, layComplemento, layBairro, layCidade, layUF;
     private Switch swtInativo;
     private boolean edicao = false;
-
+    private Button btnConsultarCEP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +70,13 @@ public class AlunoActivity extends AppCompatActivity {
         layCidade = findViewById(R.id.laytAlunoCidade);
         layUF = findViewById(R.id.layAlunoUF);
         swtInativo = findViewById(R.id.swtInativo);
+        btnConsultarCEP = findViewById(R.id.btnConsultarCEP);
+        btnConsultarCEP.setOnClickListener(this);
+        //configura os recursos do retrofit
+        retrofit = new Retrofit.Builder()
+                .baseUrl(URL)                                       //endereço do webservice
+                .addConverterFactory(GsonConverterFactory.create()) //conversor
+                .build();
 
         aluno = (Aluno) getIntent().getSerializableExtra("aluno");
 
@@ -85,7 +101,6 @@ public class AlunoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.itemSalvar:
                 salvar();
@@ -93,6 +108,39 @@ public class AlunoActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void consultarCEP() {
+        String sCep = txtCEP.getText().toString().trim();
+
+        //instanciando a interface
+        RESTService restService = retrofit.create(RESTService.class);
+
+        //passando os dados para consulta
+        Call<Endereco> call = restService.consultarCEP(sCep);
+
+        //colocando a requisição na fila para execução
+        call.enqueue(new Callback<Endereco>() {
+            @Override
+            public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                if (response.isSuccessful()) {
+                    Endereco endereco = response.body();
+                    txtLogradouro.setText(endereco.getLogradouro());
+                    txtComplemento.setText(endereco.getComplemento());
+                    txtBairro.setText(endereco.getBairro());
+                    txtUF.setText(endereco.getUf());
+                    txtCidade.setText(endereco.getCidade());
+                    txtUF.setText(endereco.getUf());
+                    Toast.makeText(getApplicationContext(), "CEP consultado com sucesso", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Endereco> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Ocorreu um erro ao tentar consultar o CEP. Erro: " + t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
     private void atualizarDadosTela() {
@@ -215,6 +263,19 @@ public class AlunoActivity extends AppCompatActivity {
             finish();
         } else {
             Toast.makeText(getApplicationContext(), "Dados insuficientes para o registro!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnConsultarCEP:
+                if(!txtCEP.getText().toString().isEmpty()){
+                    consultarCEP();
+                }else{
+                    Toast.makeText(getApplicationContext(), "O CEP tem que ser fornecido!", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 }

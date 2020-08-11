@@ -4,6 +4,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 @Entity(tableName = "enderecos")
@@ -11,12 +14,26 @@ public class Endereco implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private long enderecoId;
+    @SerializedName("cep")
+    @Expose
     private String cep;
+    @Expose
+    @SerializedName("logradouro")
     private String logradouro;
+    @Expose
+    @SerializedName("numero")
     private String numero;
+    @Expose
+    @SerializedName("complemento")
     private String complemento;
+    @Expose
+    @SerializedName("bairro")
     private String bairro;
+    @Expose
+    @SerializedName("localidade")
     private String cidade;
+    @Expose
+    @SerializedName("uf")
     private String uf;
 
     //construtor vazio
