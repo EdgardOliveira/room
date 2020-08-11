@@ -7,6 +7,10 @@
 4. Room Database: Simplifica o trabalho do banco de dados e serve como um ponto de acesso ao banco de dados SQLite subjacente (oculta SQLiteOpenHelper). O banco de dados Room usa o DAO para fazer consultas ao banco de dados SQLite.
 5. Repository: Não faz parte da arquitetura ROOM, mas é considerada uma boa prática, pois através dele, podemos gerenciar múltiplas fontes de dados (Exemplo: RESTful (web) /Local(SQLite)).
 
+## Diagrama de Classes
+<img src="https://github.com/EdgardOliveira/room/blob/master/imagens/ClassDiagram.png" alt="diagramaClasse"  height="500" width="300">
+
+
 ## Importe a biblioteca
 1. Abra o build.gradle (Module: app) e adicione as dependências:
 
