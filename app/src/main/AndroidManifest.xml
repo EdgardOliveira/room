@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.AlunoActivity"></activity>
+        <activity
+            android:name=".views.AlunoActivity"
+            android:parentActivityName=".views.AlunosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.AlunosActivity"/>
+        </activity>
         <activity android:name=".views.AlunosActivity" />
         <activity android:name=".views.MainActivity">
             <intent-filter>

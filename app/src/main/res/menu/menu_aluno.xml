@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemSalvar"
+        android:contentDescription="Salvar"
+        android:icon="@drawable/ic_salvar"
+        android:orderInCategory="1"
+        android:title="Salvar"
+        app:showAsAction="ifRoom|withText" />
+</menu>

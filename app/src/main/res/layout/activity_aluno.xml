@@ -6,4 +6,215 @@
     android:layout_height="match_parent"
     tools:context=".views.AlunoActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/layAlunoPrimeiroNome"
+        app:layout_constraintEnd_toEndOf="@+id/layAlunoPrimeiroNome"
+        app:layout_constraintStart_toEndOf="@+id/swtInativo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Id" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoPrimeiroNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/swtInativo"
+        app:layout_constraintTop_toBottomOf="@+id/swtInativo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoPrimeiroNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoSobrenome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoPrimeiroNome"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoPrimeiroNome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoSobrenome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sobrenome" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoCPF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoSobrenome"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoSobrenome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoCPF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CPF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoCEP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoCPF"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoCPF">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoCEP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CEP" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoLogradouro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoCEP"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoCEP">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoLogradouro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Logradouro" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoNumero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoLogradouro"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoLogradouro">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoComplemento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoNumero"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoNumero">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoComplemento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Complemento" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoBairro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoComplemento"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoComplemento">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoBairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bairro" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/laytAlunoCidade"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/layAlunoBairro"
+        app:layout_constraintTop_toBottomOf="@+id/layAlunoBairro">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cidade" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layAlunoUF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/layAlunoBairro"
+        app:layout_constraintStart_toEndOf="@+id/laytAlunoCidade"
+        app:layout_constraintTop_toTopOf="@+id/laytAlunoCidade">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAlunoUF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="UF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Switch
+        android:id="@+id/swtInativo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:checked="false"
+        android:showText="true"
+        android:switchPadding="20dp"
+        android:text="Inativo"
+        android:textOff="Não"
+        android:textOn="Sim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:checked="false" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

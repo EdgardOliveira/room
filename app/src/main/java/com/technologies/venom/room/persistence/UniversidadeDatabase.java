@@ -61,8 +61,8 @@ public abstract class UniversidadeDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             //incluímos o campo cpf na classe alunos
-            database.execSQL("ALTER TABLE alunos "
-                    + " ADD COLUMN cpf TEXT DEFAULT ''");
+            database.execSQL("ALTER TABLE alunos " +
+                            "ADD COLUMN cpf TEXT DEFAULT ''");
         }
     };
 
@@ -118,7 +118,7 @@ public abstract class UniversidadeDatabase extends RoomDatabase {
     static final Migration MIGRATION_5_6 = new Migration(5, 6) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
-            //incluímos o campo inativo na classe alunos
+            //incluímos o campo inativo na classe/entidade alunos
             database.execSQL("ALTER TABLE alunos "
                     + " ADD COLUMN inativo INTEGER NOT NULL DEFAULT 0");
         }

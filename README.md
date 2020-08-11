@@ -33,8 +33,8 @@ public class Aluno {
 ### Exemplo de DAO Genérico com as operações comuns (que todos os DAO's irão ter (CRUD))
 ```java
 @Dao
-public interface BaseDao<T> {
-    
+public interface GenericoDao<T> {
+
     /**
      * Função responsável por inserir um objeto na base de dados
      *
@@ -81,31 +81,115 @@ public interface BaseDao<T> {
 
 ```java
 @Dao
-public interface AlunoDao {
-    @Insert
-    long inserir(Aluno aluno);
-
-    @Update
-    void atualizar(Aluno aluno);
-
-    @Delete
-    void excluir(Aluno aluno);
+public abstract class AlunoDao implements GenericoDao<Aluno> {
 
     @Query("SELECT * FROM alunos")
-    List<Aluno> listar();
+    public abstract List<Aluno> listar();
 
     @Query("SELECT * FROM alunos WHERE alunoId = :id")
-    Aluno listarPorId(long id);
+    public abstract Aluno listarPorId(long id);
 }
 ```
 
 ### Exemplo de repository
 ```java
+public class AlunoRepository {
 
+    private UniversidadeDatabase universidadeDatabase;
+
+    public AlunoRepository(Context context){
+        universidadeDatabase = UniversidadeDatabase.getInstance(context);
+    }
+
+    public long cadastrar(Aluno aluno){
+        CadastrarAlunoAsyncTask asyncTask = new CadastrarAlunoAsyncTask(universidadeDatabase.getAlunoDao());
+        Long id = null;
+        try {
+            id = asyncTask.execute(aluno).get().longValue();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return id;
+    }
+
+    public void atualizar(Aluno aluno){
+        new AtualizarAlunoAsyncTask(universidadeDatabase.getAlunoDao()).execute(aluno);
+    }
+
+    public void excluir(Aluno aluno){
+        new ExcluirAlunoAsyncTask(universidadeDatabase.getAlunoDao()).execute(aluno);
+    }
+
+    public List<Aluno> listar() {
+        return universidadeDatabase.getAlunoDao().listar();
+    }
+
+    public Aluno listarPorId(Long id) {
+        return universidadeDatabase.getAlunoDao().listarPorId(id);
+    }
+}
 ```
 
 ### Exemplo de AsyncTask
 
+## Cadastrar
+```java
+public class CadastrarAlunoAsyncTask extends AsyncTask<Aluno, Void, Long> {
 
+    private AlunoDao alunoDao;
 
+    public CadastrarAlunoAsyncTask(AlunoDao alunoDao) {
+        this.alunoDao = alunoDao;
+    }
 
+    @Override
+    protected Long doInBackground(Aluno... alunos) {
+        return alunoDao.inserir(alunos[0]);
+    }
+
+    @Override
+    protected void onPostExecute(Long id) {
+        super.onPostExecute(id);
+    }
+}
+```
+## Atualizar
+```java
+public class AtualizarAlunoAsyncTask extends AsyncTask<Aluno, Void, Void> {
+
+    private AlunoDao alunoDao;
+
+    public AtualizarAlunoAsyncTask(AlunoDao alunoDao) {
+        this.alunoDao = alunoDao;
+    }
+
+    @Override
+    protected Void doInBackground(Aluno... alunos) {
+        alunoDao.atualizar(alunos[0]);
+        return null;
+    }
+}
+```
+
+## Excluir
+```java
+public class ExcluirAlunoAsyncTask extends AsyncTask<Aluno, Void, Void> {
+
+    private AlunoDao alunoDao;
+
+    public ExcluirAlunoAsyncTask(AlunoDao alunoDao) {
+        this.alunoDao = alunoDao;
+    }
+
+    @Override
+    protected Void doInBackground(Aluno... alunos) {
+
+        alunoDao.excluir(alunos[0]);
+
+        return null;
+    }
+}
+```
