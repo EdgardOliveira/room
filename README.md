@@ -8,7 +8,7 @@
 5. Repository: Não faz parte da arquitetura ROOM, mas é considerada uma boa prática, pois através dele, podemos gerenciar múltiplas fontes de dados (Exemplo: RESTful (web) /Local(SQLite)).
 
 ## Diagrama de Classes
-<img src="https://github.com/EdgardOliveira/room/blob/master/imagens/ClassDiagram.png" alt="diagramaClasse"  height="500" width="300">
+<img src="https://github.com/EdgardOliveira/room/blob/master/imagens/ClassDiagram.png" alt="diagramaClasse"  height="600" width="900">
 
 
 ## Importe a biblioteca
